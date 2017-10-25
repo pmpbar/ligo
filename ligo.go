@@ -1,7 +1,5 @@
 package ligo
 
-import "fmt"
-
 func KeySearch(key string, data interface{}, allowInterfaces bool) interface{} {
 	keyedData := data.(map[string]interface{})
 	var val interface{}
@@ -32,18 +30,17 @@ func KeySearch(key string, data interface{}, allowInterfaces bool) interface{} {
 	return val
 }
 
-func CheckType(inter interface{}) {
-	switch v := inter.(type) {
+func CheckType(i interface{}) string {
+	switch i.(type) {
 	case int:
-		fmt.Printf("Integer: %v\n", v)
+		return "int"
 	case float64:
-		fmt.Printf("Float64: %v\n", v)
+		return "float64"
 	case string:
-		fmt.Printf("String: %v\n", v)
+		return "string"
 	case map[string]interface{}:
-		fmt.Printf("Interface: %v\n", v)
+		return "map[string]interface{}"
 	default:
-		// And here I'm feeling dumb. ;)
-		fmt.Printf("Unknown type")
+		return ""
 	}
 }

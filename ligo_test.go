@@ -19,8 +19,15 @@ func TestKeySearch(t *testing.T) {
 	assert.Equal(t, child, "hello world!")
 
 	obj := KeySearch("object", data, true).(map[string]interface{})
-	// checkType(obj)
-	objShouldBe := map[string]interface{}{"child": "hello world!"}
-	assert.Equal(t, obj, objShouldBe)
+	assert.Equal(t, obj, map[string]interface{}{"child": "hello world!"})
 
+}
+
+func TestCheckType(t *testing.T) {
+	i := interface{}(123)
+	y := CheckType(i)
+	assert.Equal(t, y, "int")
+	i = interface{}("string")
+	y = CheckType(i)
+	assert.Equal(t, y, "string")
 }
